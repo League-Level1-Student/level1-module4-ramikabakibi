@@ -25,10 +25,12 @@ void SettingStuff() {
 	frame.add(panel);
 	panel.add(button);
 	panel.add(button1);
-	button.setText("Trick");
-	button1.setText("Treat");
+	button.setText("Treat");
+	button1.setText("Trick");
 	button.addActionListener(this);
 	button1.addActionListener(this);
+	frame.pack();
+	frame.setVisible(true);
 }
 
 private void showPictureFromTheInternet(String imageUrl) {
@@ -51,7 +53,7 @@ public void actionPerformed(ActionEvent e) {
 		showPictureFromTheInternet("https://d17fnq9dkz9hgj.cloudfront.net/uploads/2018/03/Russian-Blue_01.jpg");
 	}
 	if(e.getSource()==button1) {
-		showPictureFromTheInternet("https://i.chirkup.me/00/00/66/6698_728x.jpg");
+		showPictureFromTheInternet("https://i.pinimg.com/originals/cf/72/16/cf7216d7135400b060e617260d0e7a24.jpg");
 	}
 }
 }
