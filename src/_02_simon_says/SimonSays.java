@@ -19,8 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.io.IOException;
-//ATTENTION ATTENTION ATTENTION, I'm so close to finishing it, but for some reason the score and tries is not
-//going up so we need to fix it. Just run the code and see what's wrong and ask Daniel
+
 public class SimonSays extends KeyAdapter {
 
 	HashMap<Integer, String> images = new HashMap<Integer, String>();
@@ -28,6 +27,8 @@ public class SimonSays extends KeyAdapter {
 	private int tries = 0;
 	private boolean simonSays = false;
 	Date timeAtStart;
+	int points = 0;
+
 
 	// Complete steps 1 - 7 before you test
 	// 1. Declare a JFrame variable
@@ -36,56 +37,54 @@ public class SimonSays extends KeyAdapter {
 	public void run() {
 		// 2. Add the four images that match keyboard keys like this:
 		// images.put(new Integer(KeyEvent.VK_UP), "up.jpg");
-images.put(new Integer(KeyEvent.VK_UP), "up.jpg");
-images.put(new Integer(KeyEvent.VK_RIGHT), "right.jpg");
-images.put(new Integer(KeyEvent.VK_DOWN), "down.jpg");
-images.put(new Integer(KeyEvent.VK_LEFT), "left.jpg");
+		images.put(new Integer(KeyEvent.VK_UP), "up.jpg");
+		images.put(new Integer(KeyEvent.VK_RIGHT), "right.jpg");
+		images.put(new Integer(KeyEvent.VK_DOWN), "down.jpg");
+		images.put(new Integer(KeyEvent.VK_LEFT), "left.jpg");
 		// 3. Use a JOptionPane to tell the user the rules: "Press the matching
 		// key when
 		// 'Simon says' otherwise press a different key"
-JOptionPane.showMessageDialog(null,"Press the matching key when 'Simon says' otherwise press a different key");
+		JOptionPane.showMessageDialog(null, "Press the matching key when 'Simon says' otherwise press a different key");
 
 		// 4. Call the showImage method to show an image
-showImage();
+		showImage();
 	}
 
 	public void keyPressed(KeyEvent e) {
 		// 15. Make a points variable to track the score.
-		int points=0;
-		int tries=0;
-System.out.println( points);
+		
+		System.out.println(points);
 		// 16. If the keyCode matches the imageIndex and "Simon says"
-if(e.getKeyCode()==imageIndex&&simonSays==true){
-	points++;
-	System.out.println("Score: "+points);
-	speak("You are correct!");
-	tries++;
-	System.out.println("Tries: "+ tries);
-}
+		if (e.getKeyCode() == imageIndex && simonSays == true) {
+			points++;
+			System.out.println("Score: " + points);
+			speak("You are correct!");
+			tries++;
+			System.out.println("Tries: " + tries);
+		}
 		// 17. Increase the value of score
 
 		// 18. Use the speak method to tell the user they were correct
 
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't
 		// say..."
-if(e.getKeyCode()!=imageIndex&&simonSays==false) {
-	points++;
-	System.out.println("Score: "+points);
-	speak("You are correct!");
-	tries++;
-	System.out.println("Tries: "+ tries);
-}
+		if (e.getKeyCode() != imageIndex && simonSays == false) {
+			points++;
+			System.out.println("Score: " + points);
+			speak("You are correct!");
+			tries++;
+			System.out.println("Tries: " + tries);
+		}
 
+		if (tries > 9) {
+			JOptionPane.showMessageDialog(null, "Your score is: " + points);
 
-if(tries>9) {
-	JOptionPane.showMessageDialog(null, "Your score is: "+ points);
-	
-	frame.dispose();
-	System.exit(0);
-}
+			frame.dispose();
+			System.exit(0);
+		}
 
-	frame.dispose();
-	showImage();	
+		frame.dispose();
+		showImage();
 
 		// 20. Increase the value of score
 
@@ -106,34 +105,33 @@ if(tries>9) {
 
 	private void showImage() {
 		// 5. Initialize your frame to a new JFrame()
-frame=new JFrame();
+		frame = new JFrame();
 		// 6. Set the frame to visible
-frame.setVisible(true);
+		frame.setVisible(true);
 		// 7. Uncomment the following line to add a random image to your frame
-		 frame.add(getNextRandomImage());
+		frame.add(getNextRandomImage());
 
 		// 8. Set the name of your frame
-frame.setName("Hi");
+		frame.setName("Hi");
 		// 9. Pack the frame
-frame.pack();
+		frame.pack();
 		// 10. Set the defaultCloseOperation of your frame to
 		// JFrame.EXIT_ON_CLOSE
-frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// 11. Add a key listener to the frame
-frame.addKeyListener(this);
+		frame.addKeyListener(this);
 		// 12. Create a new instance of Random
-Random rand=new Random();
+		Random rand = new Random();
 		// 13. Use the Random and the speak method to either say
 		// "Simon says press this key" or "Press this key
-int x=rand.nextInt(2);
-if(x==0) {
-	speak("Simon says press this key");
-	simonSays=true;
-}
-else {
-	speak("Press this key");
-	simonSays=false;
-}
+		int x = rand.nextInt(2);
+		if (x == 0) {
+			speak("Simon says press this key");
+			simonSays = true;
+		} else {
+			speak("Press this key");
+			simonSays = false;
+		}
 		// 14. Above, set the value of simonSays to true/false appropriately
 
 	}
