@@ -16,6 +16,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JApplet;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -43,23 +44,41 @@ frame.addMouseListener(this);
    	 int mouseX = e.getX();
    	 int mouseY = e.getY();
    	 // 5. Print the mouseX variable
-//ON THIS ONE, I finished number 3 but dont know if I did it right, ask Daniel 
+System.out.println(mouseX +" "+ mouseY);
    	 
    	 // 6. Add the mouseY variable to the previous line so that it prints out too (no new line)
    	 // 7. Adjust your secret location co-ordinates here:
-   	 int secretLocationX = 0;
-   	 int secretLocationY = 0;
+   	 int secretLocationX = 637;
+   	 int secretLocationY = 834;
    	 /** If the mouse co-ordinates and secret location are close, we'll let them ask a question. */
    	 if (areClose(mouseX, secretLocationX) && areClose(mouseY, secretLocationY)) {
    		 // 8. Get the user to enter a question for the fortune teller
-
+JOptionPane.showInputDialog("Ask any question you want.");
    		 // 9. Find a spooky sound and put it in your default package (freesound.org)
    		 // AudioClip sound = JApplet.newAudioClip(getClass().getResource("creepy-noise.wav"));
    		 // 10. Play the sound
-
+AudioClip sound = JApplet.newAudioClip(getClass().getResource("creepy-noise.wav"));
+sound.play();
    		 // 11. Use the pause() method below to wait until your music has finished
-
+pause(8);
    		 // 12. Insert your completed Magic 8 ball code here
+Random rand=new Random();
+
+int hi=rand.nextInt(5);
+System.out.println(hi);
+
+if(hi == 0) {
+	JOptionPane.showMessageDialog(null, "Yaaaasss");
+}
+else if(hi == 1) {
+	JOptionPane.showMessageDialog(null, "Nooooo");
+}
+else if (hi == 2) {
+	JOptionPane.showMessageDialog(null, "BOI ASK GOOGLE");
+}
+else if (hi == 3) {
+	JOptionPane.showMessageDialog(null, "I THINK YOU NEED TO ASK THE MASTER COPERNICUS");
+}
 
    	 }
 
@@ -89,13 +108,14 @@ frame.addMouseListener(this);
    	 setPreferredSize(new Dimension(frameWidth, frameHeight));
    	 frame.pack();
    	 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-   	 frame.setResizable(false);
+   	 frame.setResizable(true);
    	 frame.setVisible(true);
     }
 
 private void showAnotherImage(String imageName) {
    	 try {
    		 fortuneTellerImage = ImageIO.read(getClass().getResource(imageName));
+   		 
    	 } catch (Exception e) {
    		 System.err.println("Couldn't find this image: " + imageName);
    	 }
