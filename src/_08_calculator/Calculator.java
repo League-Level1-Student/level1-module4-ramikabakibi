@@ -56,12 +56,12 @@ public class Calculator implements ActionListener {
 		label1.setText(subtractionanswer + "");
 	}
 
-	void divide(int number5, int number6) {
-		int divide = number5 / number6;
+	void divide(double number5, int number6) {
+		double divide = number5 / number6;
 		label1.setText(divide + "");
 	}
 
-	void multipy(int number7, int number8) {
+	void multiply(int number7, int number8) {
 		int multiply = number7 * number8;
 		label1.setText(multiply + "");
 	}
@@ -78,6 +78,21 @@ public class Calculator implements ActionListener {
 			int s=Integer.parseInt(field.getText());
 			int x=Integer.parseInt(field2.getText());
 			add(s, x);
+		}
+		if(e.getSource()==button1) {
+			int subtract1=Integer.parseInt(field.getText());
+			int subtract2=Integer.parseInt(field2.getText());
+			subtract(subtract1, subtract2);
+		}
+		if(e.getSource()==button2) {
+			int multiply1=Integer.parseInt(field.getText());
+			int multiply2=Integer.parseInt(field2.getText());
+			multiply(multiply1, multiply2);
+		}
+		if (e.getSource()==button3) {
+			int divide1=Integer.parseInt(field.getText());
+			int divide2=Integer.parseInt(field2.getText());
+			divide(divide1, divide2);
 		}
 	}
 }
