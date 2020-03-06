@@ -6,6 +6,7 @@ public class PigLatinRunner {
 		// TODO Auto-generated method stub
 PigLatinTranslator translator=new PigLatinTranslator();
 translator.doingstuff();
+translator.translate("Hi my name is Rami");
 	}
 
 }
