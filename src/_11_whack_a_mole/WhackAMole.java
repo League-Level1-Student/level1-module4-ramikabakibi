@@ -1,6 +1,6 @@
 package _11_whack_a_mole;
-//NOTE NOTE NOTE NOTE NOTE: I'm almost done, but when I press the one with mole, the mole does not move to a new
-//button. Also, the amount of times you hit and miss the mole, I did not print them
+
+
 import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,6 +28,7 @@ public class WhackAMole implements ActionListener {
 	}
 
 	void drawButtons(int numbButtons) {
+
 		int r = new Random().nextInt(numbButtons);
 		for (int i = 0; i < numbButtons; i++) {
 			JButton button = new JButton();
@@ -39,10 +40,14 @@ public class WhackAMole implements ActionListener {
 			}
 			panel.add(button);
 		}
-		date=new Date();
+		
 
 	}
-
+void start(){
+	date=new Date();
+	doingstuff();
+	drawButtons(100);
+}
 	void speak(String words) {
 		try {
 			Runtime.getRuntime().exec("say " + words).waitFor();
@@ -58,6 +63,8 @@ public class WhackAMole implements ActionListener {
 
 	private void endGame(Date timeAtStart, int molesWhacked) {
 		Date timeAtEnd = new Date();
+		System.out.println(molesWhacked);
+		System.out.println((timeAtEnd.getTime() - timeAtStart.getTime()));
 		JOptionPane.showMessageDialog(null, "Your whack rate is "
 				+ ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.00 / molesWhacked) + " moles per second.");
 	}
@@ -69,7 +76,10 @@ public class WhackAMole implements ActionListener {
 			playSound("yes.wav");
 			frame.getContentPane().removeAll();
 			panel=new JPanel();
-			drawButtons(24);
+			doingstuff();
+			drawButtons(100);
+			frame.repaint();
+			frame.revalidate();
 			mole++;
 			if(mole==10) {
 				endGame(date, mole);
