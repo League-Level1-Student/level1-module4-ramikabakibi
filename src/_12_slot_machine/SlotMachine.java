@@ -1,5 +1,5 @@
 package _12_slot_machine;
-
+//NOTE NOTE NOTE NOTE: I finished the random image class for one slot, but now i need to do the code for action listener for the button i think
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
