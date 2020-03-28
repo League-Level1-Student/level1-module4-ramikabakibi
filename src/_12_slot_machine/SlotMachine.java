@@ -1,5 +1,5 @@
 package _12_slot_machine;
-//NOTE NOTE NOTE NOTE: I finished the random image class for one slot, but now i need to do the code for action listener for the button i think
+//NOTE NOTE NOTE NOTE: im pretty sure i finished it, but didnt have time to test it, so run it and test it
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class SlotMachine implements ActionListener {
@@ -20,6 +21,9 @@ public class SlotMachine implements ActionListener {
 	JLabel cherry=loadImage("cherry.jpeg");
 	JLabel lemon=loadImage("lemon.png");
 	JButton button=new JButton();
+	int random;
+	int random1;
+	int random2;
 	
 void doingStuff() {
 	frame.add(panel);
@@ -34,21 +38,42 @@ frame.setVisible(true);
 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 frame.pack();
 }
-JLabel randomImage(){
-	JLabel label1=new JLabel();
+void randomImage(){
+	
 	Random rand=new Random();
-	int random=rand.nextInt(3);
-	if(random==1) {
-		label1=loadImage("orange1.png");
+	 random=rand.nextInt(3);
+	 random1=rand.nextInt(3);
+	 random2=rand.nextInt(3);
+	if(random==0) {
+		orange=loadImage("orange1.png");
 	}
-	if (random==2){
-		label1=loadImage("cherry.jpeg");
+	if (random==1){
+		orange=loadImage("cherry.jpeg");
 	}
-	if(random==3) {
-		label1=loadImage("lemon.png");
+	if(random==2) {
+		orange=loadImage("lemon.png");
 	
 	}
-	return label1;
+	if(random1==0) {
+		cherry=loadImage("orange1.png");
+	}
+	if(random1==1) {
+		cherry=loadImage("cherry.jpeg");
+		
+	}
+	if(random1==2) {
+		cherry=loadImage("lemon.png");
+	}
+	if(random2==0) {
+		lemon=loadImage("orange1.png");
+	}
+	if(random2==1) {
+		lemon=loadImage("cherry.jpeg");
+	}
+	if(random2==2) {
+		lemon=loadImage("lemon.png");
+	}
+	
 }
 private JLabel loadImage(String fileName) {
 	URL imageURL = getClass().getResource(fileName);
@@ -59,6 +84,16 @@ private JLabel loadImage(String fileName) {
 @Override
 public void actionPerformed(ActionEvent arg0) {
 	// TODO Auto-generated method stub
-	
+	if(random==random1&&random1==random2) {
+		JOptionPane.showMessageDialog(null, "You win!");
+	}
+	panel.remove(lemon);
+	panel.remove(cherry);
+	panel.remove(orange);
+	randomImage();
+	panel.add(cherry);
+	panel.add(lemon);
+	panel.add(orange);
+	frame.pack();
 }
 }
