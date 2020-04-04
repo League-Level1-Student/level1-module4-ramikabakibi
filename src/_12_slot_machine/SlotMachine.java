@@ -1,5 +1,5 @@
 package _12_slot_machine;
-//NOTE NOTE NOTE NOTE: im pretty sure i finished it, but didnt have time to test it, so run it and test it
+//DONE!!!!
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,6 +26,7 @@ public class SlotMachine implements ActionListener {
 	int random2;
 	
 void doingStuff() {
+	
 	frame.add(panel);
 	panel.add(button);
 	button.setText("SPIN");
@@ -75,6 +76,8 @@ void randomImage(){
 	}
 	
 }
+
+
 private JLabel loadImage(String fileName) {
 	URL imageURL = getClass().getResource(fileName);
 	Icon icon = new ImageIcon(imageURL);

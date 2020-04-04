@@ -8,6 +8,7 @@ public class SlotMachineRunner {
 		// TODO Auto-generated method stub
 SlotMachine machine=new SlotMachine();
 machine.doingStuff();
+
 	}
 
 }
